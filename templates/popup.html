@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download pro</title>
+</head>
+<body><center>
+    <h1>Download your video</h1>
+    <H2>open video and click three dots there you can see download button</H2>
+    <progress id="progressbar" value="0" max="100"></progress>
+    <p id="progressmsg"></p>
+    <center><button id="downloadbtn" disabled>Download</button></center>
+    <script>
+        var stream = JSON.parse('{{ stream_json|safe }}');
+        var progressbar = document.getElementById('progressbar');
+        var progressmsg = document.getElementById('progressmsg');
+        var downloadbtn = document.getElementById('downloadbtn');
+        var dirs = '{{ dirs }}';
+
+        var video = document.createElement('video');
+        video.src = stream.url;
+        video.controls = true;
+        document.body.appendChild(video);
+
+        video.addEventListener('canplay', function() {
+            progressmsg.innerHTML = 'Video ready for download.';
+            downloadbtn.disabled = false;
+        });
+
+        downloadbtn.addEventListener('click', function() {
+            window.location.href = stream.url;
+        });
+    </script>
+    </center>
+</body>
+</html>
