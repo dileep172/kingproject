@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$xrw1&40^s%b8_gp4-0ce^_i_tu*!gj@2dju7zx)5qngg_sp67
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['18.223.211.222','downloadpro.in','www.downloadpro.in']
 
 # Application definition
 
