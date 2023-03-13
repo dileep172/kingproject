@@ -18,7 +18,7 @@ from django.urls import path,include
 #from kingproject import views
 #from .views import king
 #from kingproject import demoapp
-from demoapp.views import one,save,downloaded,come,how,feed,pramote
+from demoapp.views import one,save,downloaded,come,how,feed,pramote,song
 from django.conf.urls.static import static
 from django.conf import  settings
 urlpatterns = [
@@ -30,6 +30,7 @@ urlpatterns = [
     path('how/',how,name="how to download"),
     path("feed/",feed,name="feedback"),
     path("pramote/",pramote,name="pramote"),
+    path("song/<str:abr>/",song,name="song"),
 ]
 
 urlpatterns  += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
