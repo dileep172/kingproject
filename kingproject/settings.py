@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$xrw1&40^s%b8_gp4-0ce^_i_tu*!gj@2dju7zx)5qngg_sp67'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['18.223.211.222','downloadpro.in','192.168.131.156','www.downloadpro.in']#,'127.0.0.1'
+ALLOWED_HOSTS = ['18.223.211.222','downloadpro.in','www.downloadpro.in','192.168.131.156',]#,'127.0.0.1'
 # Application definition
 CSRF_COOKIE_SECURE=True
 CSRF_COOKIE_HTTPONLY=True

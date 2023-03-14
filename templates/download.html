@@ -28,6 +28,22 @@
 		}
     </style>
   <link rel="icon" href="{% static 'mylogo1.png' %}"
+  $.ajax({
+    url: '/my-url/',
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': '{{ csrf_token }}'
+    },
+    data: {
+      // Your form data goes here
+    },
+    success: function(response) {
+      // Handle success
+    },
+    error: function(xhr, status, error) {
+      // Handle error
+    }
+  });  
 </head>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">
@@ -131,7 +147,7 @@
         <td>{{i.abr}}<img src="{% static 'AUDIO ICON.webp' %}" width="28" height="28"</td>
         <td>{{i.type}}<img src="{% static 'AUDIO ICON.webp' %}" width="28" height="28"</td>
         <td>
-        <form action="{% url 'song' i.abr|slice:":2" %}" method="POST">
+        <form action="{% url 'song' i.abr|slice:":2" %}" method="post">{% csrf_token %}
           {% csrf_token %}
           <input type="submit" class="btn btn-danger" value="Download" >
         </form>
@@ -149,5 +165,5 @@
     -->
   </body>
   <BR><BR><BR>
-    <H4><img src="{% static 'AUDIO ICON.webp' %}" width="38" height="38"> AUDIO FILES COMING SOON ! PLEASE SUPPORT🖤</H4>
+    <H4><img src="{% static 'AUDIO ICON.webp' %}" width="38" height="38">DOWNLOAD AUDIO FILES</H4>
 </html>

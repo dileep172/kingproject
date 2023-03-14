@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt,csrf_protect,requires_csrf_token,ensure_csrf_cookie
 from pytube import YouTube
 import os
 import requests
@@ -36,7 +36,11 @@ def pramote(request):
     return render(request,'promot.html')
 
 # just leave it
+from django.views.decorators.csrf import csrf_protect
+
+@csrf_protect
 def save(request):
+    global url
     url = request.GET.get('url')
     if not url:
         return render(request, 'download.html', {'alert': 'Please enter a valid YouTube video URL.'})
@@ -55,8 +59,11 @@ def save(request):
     return render(request, 'download.html', {'rsl': resolutions,'sang':audio_streams,'titl': Title, 'ytimg': Thamb})
 
 from pytube.exceptions import PytubeError
+from django.views.decorators.csrf import csrf_protect
+
+@csrf_protect
 def downloaded(request, resolution):
-    url = request.session.get('url')
+    global url
     if not url:
         return render(request, 'fail.html', {'tappu': 'Please refresh and try again! Thanks for visiting.'})
 
@@ -70,12 +77,13 @@ def downloaded(request, resolution):
         return render(request, 'popup.html', {'stream_json': json.dumps({'url': stream.url, 'title': stream.title})})
     except PytubeError:
         return render(request, 'fail.html', {'tappu': 'please go back and try again later.'})
+from django.views.decorators.csrf import csrf_protect
 
+@csrf_protect
 def song(request, abr):
-    url = request.session.get('url')
+    global url
     if not url:
         return render(request, 'fail.html',{'tappu':'please refresh and try again! thanks for visit,thanks'})
-
     homedir = os.path.expanduser("~")
     dirs = homedir + '/Downloads'
     try:
