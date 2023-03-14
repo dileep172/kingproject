@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-$xrw1&40^s%b8_gp4-0ce^_i_tu*!gj@2dju7zx)5qngg_sp67
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['18.223.211.222','downloadpro.in','www.downloadpro.in','192.168.131.156',]#,'127.0.0.1'
+ALLOWED_HOSTS = ['52.15.56.209','downloadpro.in','www.downloadpro.in']#,'127.0.0.1','192.168.131.156',
 # Application definition
 CSRF_COOKIE_SECURE=True
 CSRF_COOKIE_HTTPONLY=True
