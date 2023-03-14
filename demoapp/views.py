@@ -37,7 +37,7 @@ def pramote(request):
 
 # just leave it
 from django.views.decorators.csrf import csrf_protect
-
+@csrf_exempt
 @csrf_protect
 def save(request):
     global url
@@ -60,7 +60,7 @@ def save(request):
 
 from pytube.exceptions import PytubeError
 from django.views.decorators.csrf import csrf_protect
-
+@csrf_exempt
 @csrf_protect
 def downloaded(request, resolution):
     global url
@@ -78,7 +78,7 @@ def downloaded(request, resolution):
     except PytubeError:
         return render(request, 'fail.html', {'tappu': 'please go back and try again later.'})
 from django.views.decorators.csrf import csrf_protect
-
+@csrf_exempt
 @csrf_protect
 def song(request, abr):
     global url
